@@ -1,13 +1,13 @@
-from flask import jsonify
 from datetime import datetime
 from flask_restful import Resource
-from server import started_time
+from temp import started_time
 
 
 class ServerInfo(Resource):
 
     def get(self):
-        return jsonify({
-            "servertime": datetime.now(),
-            "runTime": datetime.now() - started_time
-        }), 200
+        output = {
+            "serverTime": str(datetime.now()),
+            "runTime": str(datetime.now() - started_time)
+        }
+        return output, 200
